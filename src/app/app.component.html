@@ -1,0 +1,17 @@
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+
+   <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+      <input type="text" ngxCurrencyFormatter formControlName="basePrice" >
+      <input formControlName="discount" placeholder="Last name">
+ 
+      <button type="submit">Submit</button>
+   </form>
+
+  
+  <pre>
+    model value: {{ myForm.value | json }}
+  </pre>
