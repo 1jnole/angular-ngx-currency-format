@@ -87,7 +87,7 @@ export class NgxCurrencyFormatterComponent implements ControlValueAccessor, OnIn
   }
 
   private transformValue() {
-    if (NgxCurrency.isValid(this.value) && NgxCurrency.isNumeric(this.value)) {
+    if (NgxCurrency.isValid(this.value) && NgxCurrency.isNumeric(this.value) && NgxCurrency.isValidRegex(this.value)) {
       this.elementRef.nativeElement.value = this.currencyPipe.transform(this.value, this.code, 'symbol', this.digit).trim();
     } else {
       this.resetValue();
