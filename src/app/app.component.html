@@ -1,17 +1,30 @@
-<hello name="{{ name }}"></hello>
+
 <p>
-  Start editing to see some magic happen :)
+    Start editing to see some magic happen :)
 </p>
 
-   <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
 
-      <input type="text" ngxCurrencyFormatter formControlName="basePrice" >
-      <input formControlName="discount" placeholder="Last name">
- 
-      <button type="submit">Submit</button>
-   </form>
+    <input type="text" ngxCurrencyFormatter formControlName="basePrice"
+           [ngClass]="{invalid: (myForm.get('basePrice').hasError('pattern'))}">
+    <span class="input_error"
+          *ngIf="myForm.get('basePrice').hasError('pattern') "> Error </span>
+    <input formControlName="discount" placeholder="Last name"
+           [ngClass]="{invalid: (myForm.get('discount').hasError('minlength')) && myForm.get('discount').touched}"
+    >
+    <span class="input_error"
+          *ngIf="myForm.get('discount').hasError('minlength') && myForm.get('discount').touched"> Error </span>
 
-  
-  <pre>
+    <button type="submit">Submit</button>
+</form>
+ {{ myForm.get('basePrice').hasError('minlength')}}
+{{ myForm.get('basePrice').touched}}
+{{  myForm.get('discount').touched }}
+<pre>
     model value: {{ myForm.value | json }}
   </pre>
+
+<pre>
+    model status: {{ myForm.status }}
+
+</pre>

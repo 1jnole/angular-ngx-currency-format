@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'my-app',
@@ -14,8 +14,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
      /* Form listener where we define our validations rules*/
     this.myForm = this.formBuilder.group({
-      basePrice: this.formBuilder.control(234234),
-      discount: this.formBuilder.control(''),
+      basePrice: this.formBuilder.control('', [Validators.pattern('\\d*([.,\\/]?\\d+)')]),
+      discount: this.formBuilder.control('',[ Validators.minLength(6)]),
       discountedPrice: this.formBuilder.control('')
     });
   }
@@ -23,4 +23,6 @@ export class AppComponent implements OnInit {
   onSubmit(){
     console.log(+this.myForm.getRawValue().basePrice);
   }
+
+
 }

@@ -2,18 +2,16 @@ import {CommonModule, CurrencyPipe} from '@angular/common';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {NgxCurrencyConfig} from './ngx-currency';
 import {NgxCurrencyFormatterComponent} from './ngx-currency-formatter.component';
-import {NgxNumberValidatorDirective} from './ngx-number-validator.directive';
+
 @NgModule({
   imports: [
     CommonModule,
   ],
   declarations: [
-    NgxCurrencyFormatterComponent,
-    NgxNumberValidatorDirective
+    NgxCurrencyFormatterComponent
   ],
   exports: [
-    NgxCurrencyFormatterComponent,
-    NgxNumberValidatorDirective
+    NgxCurrencyFormatterComponent
   ],
   providers: [
     CurrencyPipe
