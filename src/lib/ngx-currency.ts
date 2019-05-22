@@ -13,9 +13,11 @@ export class NgxCurrency {
     }
 
     static isValidRegex(n): boolean {
-        const reg = '\\d{1,2}[,.]\\d{1,2}';
+        const reg = '^-?(?:\\d+|\\d{1,3}(?:,\\d{3})+)(?:(\\.|,)\\d+)?$';
+        const reg2 = '^[0-9]+([,.][0-9]+)*$'
         const testRegex = reg.match(n);
+        const testRegex2 = reg2.match(n);
 
-        return !testRegex;
+        return !testRegex && !testRegex2;
     }
 }
